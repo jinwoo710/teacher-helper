@@ -1,6 +1,6 @@
 export type Student = {
     id: number,
     name: string,
-    gender: "male" | "female",
+    gender: "남" | "여",
     group: number
 }
