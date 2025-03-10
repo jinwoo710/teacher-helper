@@ -4,6 +4,27 @@ import StudentNameTag from "./components/StudentNameTag";
 import { Student } from "./types";
 
 export default function Students() {
+    const testAddStudent = async () => {
+        try {
+          const response = await fetch('/api/students', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              name: "홍길동",
+              gender: "남",
+              group: 2024
+            })
+          });
+          
+          const data = await response.json();
+          console.log('Response:', data);
+        } catch (error) {
+          console.error('Error:', error);
+        }
+      };
+
     let [isAddModalopen, setIsAddModalOpen] = useState(false)
     let students: Student[] = [{name: "홍길동", id: 1, gender: "남", group: 2023},]
     return (
@@ -25,7 +46,7 @@ export default function Students() {
                         )
                     })}
                 </div>
-                <button className="cursor-pointer hover:bg-gray-100 mt-3 w-full rounded-2xl border p-2" onClick={()=>setIsAddModalOpen(true)}>추가하기</button>
+                <button className="cursor-pointer hover:bg-gray-100 mt-3 w-full rounded-2xl border p-2" onClick={()=>testAddStudent()}>추가하기</button>
             <AddStudentModal isOpen={isAddModalopen} onClose={() => {setIsAddModalOpen(false)}} />
             </div>
             <div className="flex flex-col w-full mt-10 space-y-4">

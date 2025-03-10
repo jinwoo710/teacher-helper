@@ -1,0 +1,5 @@
+[[d1_databases]]
+binding = "DB"
+database_name = "teacher-helper"
+database_id = "2018a3be-381c-46ad-9121-61c88b9060e9"
+migrations_dir = 'drizzle'
