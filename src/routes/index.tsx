@@ -3,6 +3,7 @@ import Home from './pages/Home'
 import Record from './pages/Record'
 import DefaultLayout from './layouts/Default'
 import NotFound from './pages/NotFound'
+import Students from './pages/students'
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
       {
         path: '/record',
         element: <Record />
+      },
+      {
+        path: '/students',
+        element: <Students />
       },
       {
         path: '*',
