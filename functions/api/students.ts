@@ -23,7 +23,7 @@ export const onRequestPost = async ({ request, env }: { request: Request, env: E
     const data = await request.json();
     
     await db.insert(students).values({
-      id: data.id,
+      studentId: data.studentId,
       name: data.name,
       gender: data.gender
     });

@@ -1,7 +1,8 @@
 import {integer, sqliteTable, text} from 'drizzle-orm/sqlite-core'
 
 export const students = sqliteTable('students', {
-    id: integer('id').primaryKey(),
+    id: integer('id').primaryKey({autoIncrement: true}),
+    studentId: integer('studentId').notNull(),
     name: text('name').notNull(),
     gender: text('gender', { enum: ['남', '여'] }).notNull()
 });

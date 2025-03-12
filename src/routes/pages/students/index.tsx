@@ -1,27 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddStudentModal from "./components/AddStudentModal";
-import StudentNameTag from "./components/StudentNameTag";
-import { Student } from "./types";
+import { useStudents } from "@/hooks/useStudents";
+import StudentList from "./components/StudentList";
 
 export default function Students() {
     let [isAddModalopen, setIsAddModalOpen] = useState(false)
-    let students: Student = {name: "홍길동12", id: 4, gender: "남"}
-    const createStudent = async () =>{
-        try{
-            const response = await fetch('/api/students', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(students),
-            });
+    const {students, loading, error} = useStudents()
 
-            console.log(response)
-            
-        } catch (error) {
-            console.error('Error creating student:', error);
-        }
+    const handleCloseModal = () => {
+        setIsAddModalOpen(false)
     }
+
     return (
         <div 
         className="w-full min-h-[600px] bg-white p-6 rounded-lg shadow-md flex space-x-4"
@@ -35,15 +24,10 @@ export default function Students() {
                     학생 목록 2023 (test)
                 </div>
                 <div className="flex w-[200px] flex-col space-y-2 rounded-lg border p-3 h-[80vh] overflow-y-scroll">
-                    {/* {students.map((student)=>{
-                        return(
-                            <StudentNameTag key={student.id} student={student} />
-                        )
-                    })} */}
-                    <StudentNameTag key="1" student={{id:3,name:"짱구",gender:"남"}} />
+                <StudentList loading={loading} error={error} students={students}/>
                 </div>
-                <button className="cursor-pointer hover:bg-gray-100 mt-3 w-full rounded-2xl border p-2" onClick={createStudent}>추가하기</button>
-            <AddStudentModal isOpen={isAddModalopen} onClose={() => {setIsAddModalOpen(false)}} />
+                <button className="cursor-pointer hover:bg-gray-100 mt-3 w-full rounded-2xl border p-2" onClick={() => setIsAddModalOpen(true)}>추가하기</button>
+            <AddStudentModal isOpen={isAddModalopen} onClose={handleCloseModal} />
             </div>
             <div className="flex flex-col w-full mt-10 space-y-4">
                 <div className="container min-h-[25%] border flex flex-col overflow-y-scroll rounded-lg p-4">
