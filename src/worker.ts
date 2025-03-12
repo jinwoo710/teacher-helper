@@ -1,4 +1,4 @@
-import type { D1Database, ExecutionContext } from '@cloudflare/workers-types';
+import type { D1Database } from '@cloudflare/workers-types';
 import {students} from "./db/schema"
 import { drizzle } from 'drizzle-orm/d1';
 export interface Env {
@@ -6,7 +6,7 @@ export interface Env {
 }
 
 export default {
-    async fetch(request:Request, env:Env, ctx: ExecutionContext): Promise<Response>{
+    async fetch(request:Request, env:Env): Promise<Response>{
         const db = drizzle(env.DB);
         const url= new URL(request.url);
         if(url.pathname === '/api/students' && request.method == 'GET'){

@@ -40,6 +40,7 @@ export default function Students() {
                             <StudentNameTag key={student.id} student={student} />
                         )
                     })} */}
+                    <StudentNameTag key="1" student={{id:1,name:"짱구",gender:"남"}} />
                 </div>
                 <button className="cursor-pointer hover:bg-gray-100 mt-3 w-full rounded-2xl border p-2" onClick={createStudent}>추가하기</button>
             <AddStudentModal isOpen={isAddModalopen} onClose={() => {setIsAddModalOpen(false)}} />
