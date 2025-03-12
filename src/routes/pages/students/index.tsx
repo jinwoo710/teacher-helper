@@ -5,7 +5,7 @@ import { Student } from "./types";
 
 export default function Students() {
     let [isAddModalopen, setIsAddModalOpen] = useState(false)
-    let students: Student = {name: "홍길동", id: 2, gender: "남"}
+    let students: Student = {name: "홍길동12", id: 4, gender: "남"}
     const createStudent = async () =>{
         try{
             const response = await fetch('/api/students', {
@@ -40,7 +40,7 @@ export default function Students() {
                             <StudentNameTag key={student.id} student={student} />
                         )
                     })} */}
-                    <StudentNameTag key="1" student={{id:1,name:"짱구",gender:"남"}} />
+                    <StudentNameTag key="1" student={{id:3,name:"짱구",gender:"남"}} />
                 </div>
                 <button className="cursor-pointer hover:bg-gray-100 mt-3 w-full rounded-2xl border p-2" onClick={createStudent}>추가하기</button>
             <AddStudentModal isOpen={isAddModalopen} onClose={() => {setIsAddModalOpen(false)}} />
