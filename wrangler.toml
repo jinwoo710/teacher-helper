@@ -1,0 +1,9 @@
+name = "teacher-helper"
+main = "src/worker.ts"
+compatibility_date = "2025-02-24"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "teacher-helper-db"
+database_id =  "5fd4200d-59ad-4612-a963-83965cc94194"
+
