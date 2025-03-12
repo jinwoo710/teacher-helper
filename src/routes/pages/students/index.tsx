@@ -32,7 +32,7 @@ export default function Students() {
       >
             <div className="flex flex-col">
                 <div className="h-10">
-                    학생 목록 2023
+                    학생 목록 2023 (test)
                 </div>
                 <div className="flex w-[200px] flex-col space-y-2 rounded-lg border p-3 h-[80vh] overflow-y-scroll">
                     {/* {students.map((student)=>{

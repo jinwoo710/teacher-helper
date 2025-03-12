@@ -7,3 +7,4 @@ binding = "DB"
 database_name = "teacher-helper-db"
 database_id =  "5fd4200d-59ad-4612-a963-83965cc94194"
 
+migrations_dir = 'drizzle'
